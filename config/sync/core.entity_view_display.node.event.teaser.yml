@@ -1,0 +1,32 @@
+uuid: 001097b5-2ad6-4341-bc8e-17324741065f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event.field_description
+    - field.field.node.event.field_end_date
+    - field.field.node.event.field_number_of_tickets_availabl
+    - field.field.node.event.field_price
+    - field.field.node.event.field_primary_image
+    - field.field.node.event.field_start_date
+    - node.type.event
+  module:
+    - user
+id: node.event.teaser
+targetEntityType: node
+bundle: event
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_description: true
+  field_end_date: true
+  field_number_of_tickets_availabl: true
+  field_price: true
+  field_primary_image: true
+  field_start_date: true

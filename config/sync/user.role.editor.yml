@@ -1,0 +1,21 @@
+uuid: 09786a3e-54d0-41c5-8bfa-530112334735
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.event
+  module:
+    - node
+id: editor
+label: Editor
+weight: 4
+is_admin: null
+permissions:
+  - 'create event content'
+  - 'delete any event content'
+  - 'delete event revisions'
+  - 'delete own event content'
+  - 'edit any event content'
+  - 'edit own event content'
+  - 'revert event revisions'
+  - 'view event revisions'

@@ -1,0 +1,20 @@
+uuid: 17f2950d-c828-43db-8977-1e418e13f6c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_hike_difficulty
+field_name: field_hike_difficulty
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
