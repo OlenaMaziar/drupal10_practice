@@ -3,6 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.event.feeds_item
+    - field.field.node.event.field_canceled
+    - field.field.node.event.field_currency_code
     - field.field.node.event.field_description
     - field.field.node.event.field_end_date
     - field.field.node.event.field_number_of_tickets_availabl
@@ -12,6 +15,7 @@ dependencies:
     - node.type.event
   module:
     - datetime
+    - options
     - text
     - user
 id: node.event.default
@@ -19,12 +23,19 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
+  field_currency_code:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_description:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 103
+    weight: 1
     region: content
   field_end_date:
     type: datetime_default
@@ -33,7 +44,7 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 105
+    weight: 3
     region: content
   field_number_of_tickets_availabl:
     type: number_integer
@@ -42,7 +53,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 107
+    weight: 5
     region: content
   field_price:
     type: number_decimal
@@ -53,7 +64,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 108
+    weight: 6
     region: content
   field_primary_image:
     type: entity_reference_entity_view
@@ -62,7 +73,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 106
+    weight: 4
     region: content
   field_start_date:
     type: datetime_default
@@ -71,11 +82,13 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 104
+    weight: 2
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
-hidden: {  }
+hidden:
+  feeds_item: true
+  field_canceled: true

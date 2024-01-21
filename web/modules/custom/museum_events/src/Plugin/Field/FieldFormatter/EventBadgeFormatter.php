@@ -34,15 +34,12 @@ class EventBadgeFormatter extends FormatterBase {
     $element = [];
 
     foreach ($items as $delta => $item) {
-      // Render each element as markup.
-      $element[$delta] = ['#markup' => $item->value];
-
       if($item->value == 0) {
-        $badge = 'Sold Out';
+        $badge = t('Sold Out');
         $element[$delta] = ['#markup' => $badge];
       }
       elseif ($item->value <= 10) {
-        $element[$delta] = ['#markup' => $item->value];
+        $element[$delta] = ['#markup' => $item->value . ' ' .t('seats left')];
       }
     }
 

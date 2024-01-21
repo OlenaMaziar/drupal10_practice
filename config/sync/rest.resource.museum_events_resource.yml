@@ -1,0 +1,18 @@
+uuid: 48ba4c4b-360f-4404-b497-eb48f44ba705
+langcode: en
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - museum_events
+    - serialization
+id: museum_events_resource
+plugin_id: museum_events_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - basic_auth

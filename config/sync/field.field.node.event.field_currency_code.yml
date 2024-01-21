@@ -1,0 +1,23 @@
+uuid: cd92a41e-3cf6-4e53-8557-fc724311e0e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_currency_code
+    - node.type.event
+  module:
+    - options
+id: node.event.field_currency_code
+field_name: field_currency_code
+entity_type: node
+bundle: event
+label: Currency
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: dkk
+default_value_callback: ''
+settings: {  }
+field_type: list_string

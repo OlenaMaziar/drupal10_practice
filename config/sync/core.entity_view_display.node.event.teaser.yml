@@ -4,6 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.event.feeds_item
+    - field.field.node.event.field_canceled
+    - field.field.node.event.field_currency_code
     - field.field.node.event.field_description
     - field.field.node.event.field_end_date
     - field.field.node.event.field_number_of_tickets_availabl
@@ -24,6 +27,9 @@ content:
     weight: 100
     region: content
 hidden:
+  feeds_item: true
+  field_canceled: true
+  field_currency_code: true
   field_description: true
   field_end_date: true
   field_number_of_tickets_availabl: true

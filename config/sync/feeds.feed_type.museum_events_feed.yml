@@ -1,0 +1,160 @@
+uuid: 0b996c61-f64c-4c0b-af7a-ba9e9db00091
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.event.title
+    - field.field.node.event.field_canceled
+    - field.field.node.event.field_description
+    - field.field.node.event.field_end_date
+    - field.field.node.event.field_number_of_tickets_availabl
+    - field.field.node.event.field_price
+    - field.field.node.event.field_primary_image
+    - field.field.node.event.field_start_date
+    - node.type.event
+  module:
+    - feeds_ex
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers: {  }
+label: 'Museum Events Feed'
+id: museum_events_feed
+description: ''
+help: ''
+import_period: 3600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: true
+  fallback_hub: ''
+  request_timeout: 30
+parser: jsonpath
+parser_configuration:
+  context:
+    value: '$.*'
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: event
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: false
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: json
+  description:
+    value: description
+    label: description
+    machine_name: description
+    type: json
+  start_date:
+    value: start_date
+    label: start_date
+    machine_name: start_date
+    type: json
+  end_date:
+    value: end_date
+    label: end_date
+    machine_name: end_date
+    type: json
+  image:
+    value: image
+    label: image
+    machine_name: image
+    type: json
+  available_tickets:
+    value: available_tickets
+    label: available_tickets
+    machine_name: available_tickets
+    type: json
+  price:
+    value: price
+    label: price
+    machine_name: price
+    type: json
+  price_amount:
+    value: "price['amount']"
+    label: "price['amount']"
+    machine_name: price_amount
+    type: json
+  canceled:
+    value: canceled
+    label: canceled
+    machine_name: canceled
+    type: json
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_description
+    map:
+      value: description
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_start_date
+    map:
+      value: start_date
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_end_date
+    map:
+      value: end_date
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_primary_image
+    map:
+      target_id: image
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: image
+  -
+    target: field_number_of_tickets_availabl
+    map:
+      value: available_tickets
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_price
+    map:
+      value: price_amount
+    settings:
+      language: ''
+    unique: {  }
+  -
+    target: field_canceled
+    map:
+      value: canceled
+    settings:
+      language: null

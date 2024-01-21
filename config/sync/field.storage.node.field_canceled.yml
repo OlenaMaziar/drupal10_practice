@@ -1,0 +1,18 @@
+uuid: 80acf87c-01f1-4209-8be9-05574781ade8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_canceled
+field_name: field_canceled
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

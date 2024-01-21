@@ -1,0 +1,5 @@
+services:
+  museum_events.my_subscriber:
+    class: Drupal\museum_events\EventSubscriber\EventFeed
+    tags:
+      - { name: event_subscriber }
