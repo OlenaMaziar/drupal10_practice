@@ -4,10 +4,11 @@ declare(strict_types = 1);
 
 namespace Drupal\museum_events\Plugin\rest\resource;
 
+use Drupal\file\Entity\File;
 use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
+use Drupal\media\Entity\Media;
 
 /**
  * Provides an Event Resource.
@@ -44,12 +45,16 @@ class MuseumEventResource extends ResourceBase {
     }
 
     foreach ($events as $event) {
+      $file = File::load($event->get('field_primary_image')->target_id);
+      if($file) {
+        $file_url = $file->getFileUri();
+      }
       $response['events'][] = [
         'title' => $event->label(),
         'description' => $event->get('field_description')->value,
         'start_date' => $event->get('field_start_date')->value,
         'end_date' => $event->get('field_end_date')->value,
-        //'image' => $project_status->getStatusImageUrl(),
+        'image' => $file_url,
         'canceled' => $event->get('field_canceled')->value,
         'available_tickets' => $event->get('field_number_of_tickets_availabl')->value,
         'price' => [
